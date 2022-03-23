@@ -3,6 +3,8 @@ package be.webtechie.javaspringrest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import be.webtechie.gpio.LedController;
+
 @SpringBootApplication
 public class JavaSpringRestApplication {
 
