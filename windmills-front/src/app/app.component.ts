@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'windmills-front';
+  title = 'Java Windmills Project 2021/2022';
 }
