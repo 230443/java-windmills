@@ -1,0 +1,9 @@
+.inner-row {
+  width: 100%;
+  padding: 50px;
+}
+
+.column {
+  width: 20%;
+  float: left;
+}
