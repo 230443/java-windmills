@@ -1,1 +1,13 @@
-<p>turbine-control works!</p>
+<div class="inner-row">
+  <div class="column">
+    <div>
+      <ic-icon [icon]="windmillIcon" [color]="iconColor" [className]="windmill"></ic-icon>
+    </div>
+    <div>
+      <mat-slide-toggle [color]="toggleColor"
+                        [(ngModel)]="isToggleChecked"
+                        (change)="onToggle()"></mat-slide-toggle>
+    </div>
+  </div>
+  <div class="column">COLUMN2</div>
+</div>

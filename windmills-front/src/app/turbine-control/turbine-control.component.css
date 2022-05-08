@@ -1,0 +1,14 @@
+.inner-row {
+  width: 100%;
+  padding: 50px;
+}
+
+.column {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.windmill {
+  font-size: 200px;
+}

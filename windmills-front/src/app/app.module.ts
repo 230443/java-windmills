@@ -12,24 +12,34 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatButtonModule} from "@angular/material/button";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { CurrentWeatherComponent } from './weather-info/current-weather/current-weather.component';
+import { WeatherForecastComponent } from './weather-info/weather-forecast/weather-forecast.component';
+import {IconModule} from "@visurel/iconify-angular";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherInfoComponent,
-    TurbineControlComponent
+    TurbineControlComponent,
+    CurrentWeatherComponent,
+    WeatherForecastComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDividerModule,
-        MatButtonToggleModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonToggleModule,
+    IconModule,
+    MatSlideToggleModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
