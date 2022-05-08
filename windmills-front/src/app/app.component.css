@@ -7,12 +7,20 @@
   background: #FEFEFF;
 }
 
+/* MENU START */
 .mat-sidenav {
   background: #6165F7;
   width: 300px;
   border-right: none;
   color: white;
   text-align: center;
+}
+
+/* Menu title */
+h1 {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 30px 0 0 0;
 }
 
 .mat-divider {
@@ -32,26 +40,30 @@
   border-left-width: 4px;
 }
 
-.location-indicator {
+/* Location and button toggle for degrees */
+.menu-footer {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0 auto;
+  bottom: 40px;
+  margin-left: 30px;
+  text-align: left;
+}
+
+:host .mat-button-toggle-group {
+  margin-bottom: 20px;
+  border-radius: 30px;
+}
+
+.location-indicator {
   background: #FEFEFF;
   border-radius: 30px;
   color: black;
   font-size: 1.5rem;
   font-weight: 500;
-  padding: 15px;
+  padding: 15px 30px;
 }
+/* MENU END */
 
-h1 {
-  font-size: 25px;
-  font-weight: 600;
-  padding: 30px 0 0 0;
-}
-
+/* EVERYTHING ELSE */
 * {
   font-family: 'Roboto', sans-serif;
 }
