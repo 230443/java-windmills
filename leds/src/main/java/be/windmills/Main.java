@@ -20,21 +20,19 @@ import java.lang.reflect.InvocationTargetException;
 public class Main {
 
     private static final int PIN_LED = 22; // PIN 15 = BCM 22
-    private static final Console console = new Console();
+
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        console.box("Hello Rasbian world !");
+
         Context pi4j = null;
         try {
             pi4j = Pi4J.newAutoContext();
             new Main().run(pi4j);
         } catch (InvocationTargetException e) {
-            console.println("Error: " + e.getTargetException().getMessage());
         } catch (Exception e) {
-            console.println("Error: " + e.getMessage());
             e.printStackTrace();
         } finally {
             if (pi4j != null) {
@@ -46,10 +44,9 @@ public class Main {
     private void run(Context pi4j) throws Exception {
         Platforms platforms = pi4j.platforms();
 
-        console.box("Pi4J PLATFORMS");
-        console.println();
+
         platforms.describe().print(System.out);
-        console.println();
+
 
         var ledConfig = DigitalOutput.newConfigBuilder(pi4j)
                         .id("led")
