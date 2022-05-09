@@ -2,7 +2,6 @@ from flask import Flask
 from threading import Timer
 from . import Turbine
 import json
-import logging
 
 app = Flask(__name__)
 

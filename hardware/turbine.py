@@ -1,9 +1,6 @@
-#!/usr/bin/python3
-
 import logging
 from buildhat import Motor
 from . import Anemometer
-import time
 
 
 class Turbine:
@@ -41,15 +38,3 @@ class Turbine:
     def turn_off(self):
         self.__is_running = False
         self.motor.stop()
-
-
-def main():
-    turbine = Turbine(27, 'A')
-    while True:
-        turbine.update_speed()
-        time.sleep(turbine.update_interval)
-
-
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
-    main()
