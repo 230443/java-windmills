@@ -26,29 +26,23 @@ class Anemometer:
 
     def get_frequency(self):
         # Get the last few seconds of times
-
         limit = time.time() - self.keep_last_seconds
-        split = len(self.times)
 
         self.lock.acquire()
 
         split = len(self.times)
-
-        # Remove all times that are older than keep_last_seconds
         for i in range(len(self.times) - 1, -1, -1):
-            logging.debug(f"i:{i}")
-            if self.times[i] < limit:
-                logging.debug(f"=============:{self.times[i]}")
-                split = i+1
+            if self.times[i] > limit:
+                split = i
+            else:
                 break
 
-        logging.debug(f"plit:{split}")
         last_times = self.times[split:]
+
+        # Remove all times that are older than keep_last_seconds
         self.times = last_times
 
         self.lock.release()
-
-        logging.debug(f"last_times:{last_times}")
 
         # Get the partial difference between times
         if len(last_times) <= 1:
@@ -76,12 +70,6 @@ class Anemometer:
 
 
 def main():
-    # Wrap main content in a try block so we can
-    # catch the user pressing CTRL-C and run the
-    # GPIO cleanup function. This will also prevent
-    # the user seeing lots of unnecessary error
-    # messages.
-
     a = Anemometer(pin=27)
     try:
         while True:
@@ -90,8 +78,8 @@ def main():
             print(f"Frequency: {f:.2f} Hz")
 
     except KeyboardInterrupt:
-        # Reset GPIO settings
         GPIO.cleanup()
+        print("\nExiting program.")
 
 
 if __name__ == "__main__":
