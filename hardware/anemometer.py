@@ -56,6 +56,7 @@ class Anemometer:
         # Get average frequency from last few seconds
         f = 1 / (sum(times_diff) / len(times_diff))
 
+        logging.info(f"Frequency: {f:.2f} Hz")
         return f
 
     def sensorCallback(self, channel):
@@ -67,6 +68,9 @@ class Anemometer:
         self.lock.release()
 
         logging.debug(f"time_detected:{timestamp}")
+
+    def __del__(self):
+        GPIO.cleanup()
 
 
 def main():

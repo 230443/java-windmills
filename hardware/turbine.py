@@ -1,98 +1,39 @@
-#!/usr/bin/python
-# --------------------------------------
-#    ___  ___  _ ____
-#   / _ \/ _ \(_) __/__  __ __
-#  / , _/ ___/ /\ \/ _ \/ // /
-# /_/|_/_/  /_/___/ .__/\_, /
-#                /_/   /___/
-#
-#       Hall Effect Sensor
-#
-# This script tests the sensor on GPIO27.
-#
-# Author : Matt Hawkins
-# Date   : 08/05/2018
-#
-# https://www.raspberrypi-spy.co.uk/
-#
-# --------------------------------------
+#!/usr/bin/python3
 
-# Import required libraries
-import time
-import datetime
-import RPi.GPIO as GPIO
+import logging
 from buildhat import Motor
+from anemometer import Anemometer
+import time
 
 
-def sensorCallback(channel):
-    # Called if sensor output changes
-    timestamp = time.time()
-    stamp = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S:%f')
-    if GPIO.input(channel):
-        # No magnet
-        # print("Sensor HIGH " + stamp)
-        pass
-    else:
-        # Magnet
-        print("Sensor LOW " + stamp)
-        times.append(timestamp)
+class Turbine:
+    def __init__(self, hall_pin: int, motor_pin: str, speed_factor: float = 15, update_interval: float = 5):
+        self.anemometer = Anemometer(
+            hall_pin, keep_last_seconds=update_interval)
+        self.motor = Motor(motor_pin)
+        self.update_interval = update_interval
+        self.is_running = False
+        self.speed = 0
+        self.speed_factor = speed_factor
 
+    def update_speed(self):
+        f = self.anemometer.get_frequency()
+        self.speed = int(f * self.speed_factor)
 
-def get_avg_frequency(times):
-    # Get partial difference between times
-    if len(times) <= 1:
-        return 0
-    times_diff = []
-    for i in range(len(times) - 1):
-        times_diff.append(times[i + 1] - times[i])
-    # Get average
-    avg = sum(times_diff) / len(times_diff)
-    # Convert to frequency
-    return 1 / avg
+        logging.info(f"Speed: {self.speed}")
+        if self.speed == 0:
+            self.motor.stop()
+        else:
+            self.motor.start(self.speed)
 
 
 def main():
-    # Wrap main content in a try block so we can
-    # catch the user pressing CTRL-C and run the
-    # GPIO cleanup function. This will also prevent
-    # the user seeing lots of unnecessary error
-    # messages.
-
-    # Get initial reading
-    sensorCallback(HALL_PIN)
-
-    try:
-        # Loop until users quits with CTRL-C
-        global times
-        f = 0
-        while True:
-            speed = int(f * 20)
-            print(f"Frequency: {f:.2f} Hz, Speed: {speed}")
-            motor_a.run_for_seconds(3, speed=speed)
-            f = get_avg_frequency(times=times)
-            times = []
-
-    except KeyboardInterrupt:
-        # Reset GPIO settings
-        GPIO.cleanup()
-
-
-# Tell GPIO library to use GPIO references
-GPIO.setmode(GPIO.BCM)
-
-HALL_PIN = 27
-
-print(f"Setup GPIO pin as input on GPIO {HALL_PIN}")
-
-# Set Switch GPIO as input
-# Pull high by default
-GPIO.setup(HALL_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect(HALL_PIN, GPIO.BOTH,
-                      callback=sensorCallback, bouncetime=100)
-
-times = []
-motor_a = Motor('A')
+    turbine = Turbine(27, 'A')
+    while True:
+        turbine.update_speed()
+        time.sleep(turbine.update_interval)
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     main()
