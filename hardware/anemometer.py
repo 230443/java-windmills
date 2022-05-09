@@ -6,6 +6,8 @@ import RPi.GPIO as GPIO
 import logging
 import threading
 
+WIND_SPEED_FACTOR = 1
+
 
 class Anemometer:
     def __init__(self, pin, keep_last_seconds=5):
@@ -20,7 +22,7 @@ class Anemometer:
         GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(self.pin,
                               GPIO.FALLING,
-                              callback=self.sensorCallback,
+                              callback=self._sensor_callback,
                               bouncetime=100,
                               )
 
@@ -59,7 +61,10 @@ class Anemometer:
         logging.info(f"Frequency: {f:.2f} Hz")
         return f
 
-    def sensorCallback(self, channel):
+    def get_wind_speed(self):
+        return self.get_frequency() * WIND_SPEED_FACTOR
+
+    def _sensor_callback(self, channel):
         # Called if sensor output changes
         timestamp = time.time()
 
