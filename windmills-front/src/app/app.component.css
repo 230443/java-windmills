@@ -66,12 +66,15 @@ h1 {
 /* MAIN CONTENT START */
 .row {
   background: #F6F7F9;
-  margin: 7% 10% 8%;
+  margin: 4% 10% 4%;
   border-radius: 20px;
+  display: block;
+  height: 40%;
 }
 /* MAIN CONTENT END */
 
 /* EVERYTHING ELSE */
 * {
   font-family: 'Roboto', sans-serif;
+  font-weight: 500;
 }

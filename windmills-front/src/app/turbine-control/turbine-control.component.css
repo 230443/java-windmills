@@ -9,6 +9,18 @@
   text-align: center;
 }
 
+.row-icon {
+  text-align: left;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
 .windmill {
   font-size: 200px;
+}
+
+.smallIcon {
+  font-size: 70px;
+  margin-right: 10px;
 }

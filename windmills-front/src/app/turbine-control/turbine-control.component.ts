@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import windmillTwo from '@iconify/icons-icon-park-solid/windmill-two';
+import windmillIcon from '@iconify/icons-icon-park-solid/windmill-two';
+import windSpeed from '@iconify/icons-fluent/weather-squalls-24-filled';
 import {ThemePalette} from "@angular/material/core";
 
 @Component({
@@ -10,13 +11,16 @@ import {ThemePalette} from "@angular/material/core";
 export class TurbineControlComponent implements OnInit {
 
   ICON_COLOR_OFF = "#FF4D4D";
-  ICON_COLOR_ON = "#6165F7";
+  ICON_COLOR = "#6165F7";
 
-  windmillIcon = windmillTwo;
+  windmillIcon = windmillIcon;
   iconColor = this.ICON_COLOR_OFF;
   toggleColor: ThemePalette = 'primary';
   isToggleChecked = false;
   windmill = "windmill";
+
+  windSpeedIcon = windSpeed;
+  smallIcon = "smallIcon";
 
   constructor() { }
 
@@ -26,7 +30,7 @@ export class TurbineControlComponent implements OnInit {
   public onToggle() {
     if(this.isToggleChecked)
     {
-      this.iconColor = this.ICON_COLOR_ON;
+      this.iconColor = this.ICON_COLOR;
     }
     else
     {
