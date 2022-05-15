@@ -24,7 +24,7 @@ import {FormsModule} from "@angular/forms";
     WeatherInfoComponent,
     TurbineControlComponent,
     CurrentWeatherComponent,
-    WeatherForecastComponent
+    WeatherForecastComponent,
   ],
   imports: [
     BrowserModule,
