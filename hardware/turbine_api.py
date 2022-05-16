@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, Response
 from threading import Timer
 from . import Turbine
 import json
@@ -15,25 +15,25 @@ def get_status():
         "wind_speed": turbine.wind_speed,
         "turbine_speed": turbine.turbine_speed
     }
-    return json.dumps(status)
+    return Response(json.dumps(status), mimetype='application/json')
 
 
-@app.route("/turn_on")
+@ app.route("/turn_on")
 def turn_on():
     turbine.turn_on()
     status = {
         "is_running": turbine.is_running,
     }
-    return json.dumps(status)
+    return Response(json.dumps(status), mimetype='application/json')
 
 
-@app.route("/turn_off")
+@ app.route("/turn_off")
 def turn_off():
     turbine.turn_off()
     status = {
         "is_running": turbine.is_running,
     }
-    return json.dumps(status)
+    return Response(json.dumps(status), mimetype='application/json')
 
 
 def update_speed():
