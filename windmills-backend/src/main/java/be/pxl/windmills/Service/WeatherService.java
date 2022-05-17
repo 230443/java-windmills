@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface WeatherService
 {
-    public void saveWeather(Weather currentWeather);
-    public List<Weather> getWeathers();
-    public Weather getWeatherByID(Long id);
+    void saveWeather(Weather currentWeather);
+    List<Weather> getWeathers();
+    Weather getWeatherByID(Long id);
+    Weather getCurrentWeather();
 }

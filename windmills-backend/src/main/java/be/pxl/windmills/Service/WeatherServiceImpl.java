@@ -35,4 +35,10 @@ public class WeatherServiceImpl implements WeatherService
     {
         return weatherRepository.getById(id);
     }
+
+    @Override
+    public Weather getCurrentWeather()
+    {
+        return null;
+    }
 }

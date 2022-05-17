@@ -39,4 +39,10 @@ public class WeatherController
     {
         return weatherService.getWeatherByID(weather_id);
     }
+
+    @GetMapping("current-weather")
+    public Weather getCurrentWeather()
+    {
+        return weatherService.getCurrentWeather();
+    }
 }
