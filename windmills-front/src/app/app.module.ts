@@ -17,6 +17,8 @@ import { WeatherForecastComponent } from './weather-info/weather-forecast/weathe
 import {IconModule} from "@visurel/iconify-angular";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {FormsModule} from "@angular/forms";
+import { MenuComponent } from './menu/menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {FormsModule} from "@angular/forms";
     TurbineControlComponent,
     CurrentWeatherComponent,
     WeatherForecastComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import {FormsModule} from "@angular/forms";
     IconModule,
     MatSlideToggleModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

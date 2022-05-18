@@ -1,22 +1,6 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened>
-    <h1>Java Windmills Project<br>2022</h1>
-    <mat-divider></mat-divider>
-    <button mat-button class="menu-button" routerLink="/dashboard">
-      <span>Dashboard</span>
-    </button>
-    <!--
-    <button mat-button class="menu-button">
-      <span>Help</span>
-    </button>
-    -->
-    <div class="menu-footer">
-      <mat-button-toggle-group value="Celsius">
-        <mat-button-toggle value="Celsius">°C</mat-button-toggle>
-        <mat-button-toggle value="Fahrenheit">°F</mat-button-toggle>
-      </mat-button-toggle-group>
-      <div class="location-indicator">City, Country</div>
-    </div>
+    <app-menu></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="row">
