@@ -1,7 +1,10 @@
 package be.pxl.windmills.resource;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.time.LocalDateTime;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StatusDTO {
 	private Long id;
 	private LocalDateTime dateTime;
@@ -25,12 +28,12 @@ public class StatusDTO {
 		this.dateTime = dateTime;
 	}
 
-	public Boolean getActive() {
+	public Boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(Boolean active) {
-		isActive = active;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	public Double getWindSpeed() {
@@ -47,5 +50,14 @@ public class StatusDTO {
 
 	public void setTurbineSpeed(Double turbineSpeed) {
 		this.turbineSpeed = turbineSpeed;
+	}
+
+	@Override
+	public String toString() {
+		return "StatusDTO{" +
+				"isActive=" + isActive +
+				", windSpeed=" + windSpeed +
+				", turbineSpeed=" + turbineSpeed +
+				'}';
 	}
 }

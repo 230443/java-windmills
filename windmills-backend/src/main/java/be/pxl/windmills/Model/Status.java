@@ -33,12 +33,12 @@ public class Status {
 		this.dateTime = dateTime;
 	}
 
-	public Boolean getActive() {
+	public Boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(Boolean active) {
-		isActive = active;
+	public void setIsActive(Boolean active) {
+		this.isActive = active;
 	}
 
 	public Double getWindSpeed() {

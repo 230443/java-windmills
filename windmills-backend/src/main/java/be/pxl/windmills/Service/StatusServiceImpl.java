@@ -42,7 +42,7 @@ public class StatusServiceImpl implements StatusService {
 
 	private StatusDTO mapStatusToDTO(Status status) {
 		StatusDTO statusDTO = new StatusDTO();
-		statusDTO.setActive(status.getActive());
+		statusDTO.setIsActive(status.getIsActive());
 		statusDTO.setTurbineSpeed(status.getTurbineSpeed());
 		statusDTO.setWindSpeed(status.getWindSpeed());
 		statusDTO.setDateTime(status.getDateTime());
@@ -53,7 +53,7 @@ public class StatusServiceImpl implements StatusService {
 
 	private Status mapDTOToStatus(StatusDTO statusDTO) {
 		Status status = new Status();
-		status.setActive(statusDTO.getActive());
+		status.setIsActive(statusDTO.getIsActive());
 		status.setTurbineSpeed(statusDTO.getTurbineSpeed());
 		status.setWindSpeed(statusDTO.getWindSpeed());
 

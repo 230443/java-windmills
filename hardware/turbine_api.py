@@ -11,9 +11,9 @@ turbine = Turbine(27, 'A', update_interval=3)
 @app.route("/status")
 def get_status():
     status = {
-        "is_running": turbine.is_running,
-        "wind_speed": turbine.wind_speed,
-        "turbine_speed": turbine.turbine_speed
+        "isActive": turbine.is_running,
+        "windSpeed": turbine.wind_speed,
+        "turbineSpeed": turbine.turbine_speed
     }
     return Response(json.dumps(status), mimetype='application/json')
 
@@ -22,7 +22,7 @@ def get_status():
 def turn_on():
     turbine.turn_on()
     status = {
-        "is_running": turbine.is_running,
+        "isActive": turbine.is_running,
     }
     return Response(json.dumps(status), mimetype='application/json')
 
@@ -31,7 +31,7 @@ def turn_on():
 def turn_off():
     turbine.turn_off()
     status = {
-        "is_running": turbine.is_running,
+        "isActive": turbine.is_running,
     }
     return Response(json.dumps(status), mimetype='application/json')
 
