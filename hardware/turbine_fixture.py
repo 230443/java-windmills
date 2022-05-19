@@ -2,7 +2,13 @@ import random
 
 
 class Turbine:
-    def __init__(self, hall_pin: int, motor_pin: str, speed_factor: float = 15, update_interval: float = 5):
+    def __init__(
+        self,
+        hall_pin: int,
+        motor_pin: str,
+        speed_factor: float = 15,
+        update_interval: float = 5,
+    ):
         self.speed_factor = speed_factor
         self.update_interval = update_interval
         self.turbine_speed = 0

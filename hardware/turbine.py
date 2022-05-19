@@ -4,9 +4,14 @@ from . import Anemometer
 
 
 class Turbine:
-    def __init__(self, hall_pin: int, motor_pin: str, speed_factor: float = 15, update_interval: float = 5):
-        self.anemometer = Anemometer(
-            hall_pin, keep_last_seconds=update_interval)
+    def __init__(
+        self,
+        hall_pin: int,
+        motor_pin: str,
+        speed_factor: float = 15,
+        update_interval: float = 5,
+    ):
+        self.anemometer = Anemometer(hall_pin, keep_last_seconds=update_interval)
         self.motor = Motor(motor_pin)
         self.update_interval = update_interval
         self.__is_running = True

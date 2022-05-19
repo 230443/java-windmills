@@ -20,11 +20,12 @@ class Anemometer:
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.add_event_detect(self.pin,
-                              GPIO.FALLING,
-                              callback=self._sensor_callback,
-                              bouncetime=100,
-                              )
+        GPIO.add_event_detect(
+            self.pin,
+            GPIO.FALLING,
+            callback=self._sensor_callback,
+            bouncetime=100,
+        )
 
     def get_frequency(self):
         # Get the last few seconds of times
