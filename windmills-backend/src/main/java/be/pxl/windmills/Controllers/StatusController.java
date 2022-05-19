@@ -5,8 +5,12 @@ import be.pxl.windmills.resource.StatusDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.server.ResponseStatusException;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("status")
@@ -35,13 +39,19 @@ public class StatusController {
 		return statusService.getLastStatus();
 	}
 
-	@GetMapping("/{dateTime}")
-	public StatusDTO getStatusByDateTime(@PathVariable String dateTime) {
-		return statusService.getStatusByDateTime(dateTime);
-	}
-
 	@PostMapping
-	public StatusDTO addStatus(@RequestBody StatusDTO statusDTO) {
-		return statusService.addStatus(statusDTO);
+	public StatusDTO switchTurbine(@RequestBody StatusDTO statusDTO) {
+		return webClient
+				.post()
+				.uri("/status")
+				.contentType(MediaType.APPLICATION_JSON)
+				.body(Mono.just(statusDTO), StatusDTO.class)
+				.retrieve()
+				.onStatus(HttpStatus::is4xxClientError, clientResponse -> {
+					LOGGER.error("Error: " + clientResponse.statusCode());
+					throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "required parameters: isActive");
+				})
+				.bodyToMono(StatusDTO.class)
+				.block();
 	}
 }
