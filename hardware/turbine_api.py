@@ -1,5 +1,6 @@
 import datetime
-from flask import Flask, Response
+from flask import Flask, Response, request
+from werkzeug import exceptions
 from threading import Timer
 from . import Turbine
 import json
@@ -16,31 +17,24 @@ turbine = Turbine(27, "A", update_interval=3)
 # Endpoints
 
 
-@app.route("/status")
+@app.route("/status", methods=["POST", "GET"])
 def get_status():
+    if request.method == "POST":
+        data = request.get_json()
+        try:
+            if data["isActive"] is True:
+                turbine.turn_on()
+            else:
+                turbine.turn_off()
+        except KeyError:
+            raise exceptions.BadRequest("Missing isActive key")
+
     status = {
         "isActive": turbine.is_running,
         "windSpeed": turbine.wind_speed,
         "turbineSpeed": turbine.turbine_speed,
     }
-    return Response(json.dumps(status), mimetype="application/json")
 
-
-@app.route("/turn_on")
-def turn_on():
-    turbine.turn_on()
-    status = {
-        "isActive": turbine.is_running,
-    }
-    return Response(json.dumps(status), mimetype="application/json")
-
-
-@app.route("/turn_off")
-def turn_off():
-    turbine.turn_off()
-    status = {
-        "isActive": turbine.is_running,
-    }
     return Response(json.dumps(status), mimetype="application/json")
 
 

@@ -17,11 +17,13 @@ class Turbine:
 
     def update_speed(self):
         # set random wind speed
-        self.wind_speed = random.randint(0, 100)
-        self.turbine_speed = int(self.wind_speed * self.speed_factor)
+        self.wind_speed = random.random() * 6
+        if self.is_running:
+            self.turbine_speed = int(self.wind_speed * self.speed_factor)
 
     def turn_on(self):
-        self.__is_running = True
+        self.is_running = True
 
     def turn_off(self):
-        self.__is_running = False
+        self.is_running = False
+        self.turbine_speed = 0
