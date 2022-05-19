@@ -12,6 +12,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("status")
 public class StatusController {
@@ -53,5 +55,12 @@ public class StatusController {
 				})
 				.bodyToMono(StatusDTO.class)
 				.block();
+	}
+
+	@GetMapping
+	public List<StatusDTO> getAllStatus(@RequestParam(value = "id", required = false) Integer id,
+										@RequestParam(value = "page", defaultValue = "0") Integer page,
+										@RequestParam(value = "size", defaultValue = "30") Integer size) {
+		return statusService.getAll(page, size);
 	}
 }

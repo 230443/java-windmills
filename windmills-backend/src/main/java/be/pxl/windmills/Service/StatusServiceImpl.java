@@ -4,9 +4,13 @@ import be.pxl.windmills.Model.Status;
 import be.pxl.windmills.Repository.StatusRepository;
 import be.pxl.windmills.resource.StatusDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 
 @Service
@@ -30,14 +34,16 @@ public class StatusServiceImpl implements StatusService {
 		return null;
 	}
 
-	@Override
-	public List<StatusDTO> getAll() {
-		return null;
-	}
 
 	@Override
-	public StatusDTO addStatus(StatusDTO status) {
-		return mapStatusToDTO(statusRepository.save(mapDTOToStatus(status)));
+	public List<StatusDTO> getAll(int page, int size) {
+		Pageable paging = PageRequest.of(page, size);
+		return statusRepository
+				.findAll(paging)
+				.getContent()
+				.stream()
+				.map(this::mapStatusToDTO)
+				.collect(toList());
 	}
 
 	private StatusDTO mapStatusToDTO(Status status) {
