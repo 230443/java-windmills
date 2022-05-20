@@ -3,6 +3,7 @@ import windmillIcon from '@iconify/icons-icon-park-solid/windmill-two';
 import windSpeed from '@iconify/icons-fluent/weather-squalls-24-filled';
 import turbineSpeed from '@iconify/icons-mdi/fan';
 import {ThemePalette} from "@angular/material/core";
+import {TurbineService} from "../services/turbine.service";
 
 @Component({
   selector: 'app-turbine-control',
@@ -24,19 +25,22 @@ export class TurbineControlComponent implements OnInit {
   turbineSpeedIcon = turbineSpeed;
   smallIcon = "smallIcon";
 
-  constructor() { }
+  constructor(private turbineService:TurbineService) { }
 
   ngOnInit(): void {
   }
 
-  public onToggle() {
+  public onToggle()
+  {
     if(this.isToggleChecked)
     {
       this.iconColor = this.ICON_COLOR;
+      this.turbineService.turnTurbineOn();
     }
     else
     {
       this.iconColor = this.ICON_COLOR_OFF;
+      this.turbineService.turnTurbineOff();
     }
   }
 }
