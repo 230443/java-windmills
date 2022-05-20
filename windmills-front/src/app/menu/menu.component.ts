@@ -20,5 +20,4 @@ export class MenuComponent implements OnInit
       this.location = data;
     })
   }
-
 }

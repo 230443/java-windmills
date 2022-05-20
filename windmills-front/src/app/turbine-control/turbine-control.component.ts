@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import windmillIcon from '@iconify/icons-icon-park-solid/windmill-two';
 import windSpeed from '@iconify/icons-fluent/weather-squalls-24-filled';
+import turbineSpeed from '@iconify/icons-mdi/fan';
 import {ThemePalette} from "@angular/material/core";
 
 @Component({
@@ -20,6 +21,7 @@ export class TurbineControlComponent implements OnInit {
   windmill = "windmill";
 
   windSpeedIcon = windSpeed;
+  turbineSpeedIcon = turbineSpeed;
   smallIcon = "smallIcon";
 
   constructor() { }

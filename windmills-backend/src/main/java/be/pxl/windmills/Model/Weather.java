@@ -1,26 +1,27 @@
 package be.pxl.windmills.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="weather")
 public class Weather
 {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private String description;
+    private String icon;
 
-    public Long getId()
+    public String getDescription()
     {
-        return id;
+        return description;
     }
 
-    public void setId(Long id)
+    public void setDescription(String description)
     {
-        this.id = id;
+        this.description = description;
+    }
+
+    public String getIcon()
+    {
+        return icon;
+    }
+
+    public void setIcon(String icon)
+    {
+        this.icon = icon;
     }
 }

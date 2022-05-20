@@ -8,6 +8,11 @@
   float: left;
 }
 
+.column-50 {
+  width: 50%;
+  float: left;
+}
+
 .row-50 {
   font-size: 1.5em;
   display: flex;

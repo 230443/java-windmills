@@ -1,15 +1,9 @@
 package be.pxl.windmills.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import be.pxl.windmills.Model.Weather;
+import be.pxl.windmills.Model.CurrentWeather;
 import be.pxl.windmills.Service.WeatherService;
 
 import java.util.List;
@@ -23,26 +17,26 @@ public class WeatherController
     private WeatherService weatherService;
 
     @PostMapping("save-weather")
-    public void saveWeather(@RequestBody Weather weather)
+    public void saveWeather(@RequestBody CurrentWeather currentWeather)
     {
-        weatherService.saveWeather(weather);
+        weatherService.saveWeather(currentWeather);
     }
 
     @GetMapping("weather-list")
-    public List<Weather> allWeathers()
+    public List<CurrentWeather> allWeathers()
     {
         return weatherService.getWeathers();
     }
 
     @GetMapping("weather/{weather_id}")
-    public Weather weatherByID(@PathVariable("weather_id") Long weather_id)
+    public CurrentWeather weatherByID(@PathVariable("weather_id") Long weather_id)
     {
         return weatherService.getWeatherByID(weather_id);
     }
 
-    @GetMapping("current-weather")
-    public Weather getCurrentWeather()
+    @PostMapping("current-weather")
+    public CurrentWeather getCurrentWeather(@RequestParam(value="lat" )String lat, @RequestParam(value="lon" )String lon)
     {
-        return weatherService.getCurrentWeather();
+        return weatherService.getCurrentWeather(lat, lon);
     }
 }

@@ -1,9 +1,9 @@
 package be.pxl.windmills.Repository;
 
-import be.pxl.windmills.Model.Weather;
+import be.pxl.windmills.Model.CurrentWeather;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface WeatherRepository extends JpaRepository<Weather, Long>
+public interface WeatherRepository extends JpaRepository<CurrentWeather, Long>
 {
 
 }

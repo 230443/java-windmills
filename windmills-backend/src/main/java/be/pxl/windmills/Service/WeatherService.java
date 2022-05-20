@@ -1,13 +1,13 @@
 package be.pxl.windmills.Service;
 
-import be.pxl.windmills.Model.Weather;
+import be.pxl.windmills.Model.CurrentWeather;
 
 import java.util.List;
 
 public interface WeatherService
 {
-    void saveWeather(Weather currentWeather);
-    List<Weather> getWeathers();
-    Weather getWeatherByID(Long id);
-    Weather getCurrentWeather();
+    void saveWeather(CurrentWeather currentWeather);
+    List<CurrentWeather> getWeathers();
+    CurrentWeather getWeatherByID(Long id);
+    CurrentWeather getCurrentWeather(String lat, String lon);
 }
