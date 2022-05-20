@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+.speed {
+  padding-top: 5%;
+}
+
 .row-icon {
   text-align: left;
   font-size: 1.5em;
@@ -17,7 +21,7 @@
 }
 
 .windmill {
-  font-size: 200px;
+  font-size: 15em;
 }
 
 .smallIcon {

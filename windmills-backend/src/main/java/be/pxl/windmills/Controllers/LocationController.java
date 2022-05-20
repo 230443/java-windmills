@@ -32,7 +32,7 @@ public class LocationController
     @GetMapping("get-location")
     public Location getClientLocation(HttpServletRequest request) throws Exception
     {
-        // String clientIP2 = addressIPService.getClientIP(request);
+        //String clientIP = addressIPService.getClientIP(request);
 
         String clientIP = "2a02:1810:9540:ec00:38c5:22a9:8313:c3a";
         return locationService.getClientLocation(clientIP);

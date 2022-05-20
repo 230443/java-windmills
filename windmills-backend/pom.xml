@@ -57,7 +57,12 @@
 			<artifactId>geoip2</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>9.3.4.0</version>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>

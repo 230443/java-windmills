@@ -11,36 +11,28 @@ import org.springframework.util.StringUtils;
 @Service
 public class AddressIPServiceImpl implements AddressIPService
 {
-    private static final String[] IP_HEADERS = {
+    private static final String[] HEADERS= {
             "X-Forwarded-For",
             "Proxy-Client-IP",
             "WL-Proxy-Client-IP",
-            "HTTP_X_FORWARDED_FOR",
-            "HTTP_X_FORWARDED",
-            "HTTP_X_CLUSTER_CLIENT_IP",
             "HTTP_CLIENT_IP",
-            "HTTP_FORWARDED_FOR",
-            "HTTP_FORWARDED",
-            "HTTP_VIA",
-            "REMOTE_ADDR"
-    };
+            "HTTP_X_FORWARDED_FOR"};
 
     @Override
     public String getClientIP(HttpServletRequest request)
     {
-        String ipAddress = request.getHeader("X-Forwarded-For");
+        String ipAddress = null;
 
-        if(!StringUtils.hasLength(ipAddress) || "unknown".equalsIgnoreCase(ipAddress))
+        for (String header : HEADERS)
         {
-            ipAddress = request.getHeader("Proxy-Client-IP");
+            ipAddress = request.getHeader(header);
+            if (ipAddress != null && ipAddress.length() > 0)
+            {
+                return StringUtils.commaDelimitedListToStringArray(ipAddress)[0];
+            }
         }
 
-        if(!StringUtils.hasLength(ipAddress) || "unknown".equalsIgnoreCase(ipAddress))
-        {
-            ipAddress = request.getHeader("WL-Proxy-Client-IP");
-        }
-
-        if(!StringUtils.hasLength(ipAddress) || "unknown".equalsIgnoreCase(ipAddress))
+        if(!StringUtils.hasLength(ipAddress))
         {
             ipAddress = request.getRemoteAddr();
             String LOCALHOST_IPV4 = "127.0.0.1";

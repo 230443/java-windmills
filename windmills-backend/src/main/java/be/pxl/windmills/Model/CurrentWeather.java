@@ -5,8 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @Entity
 @Table(name="weather")
@@ -21,8 +19,6 @@ public class CurrentWeather
     private int humidity;
     private int pressure;
     private String description;
-    /*private Timestamp sunrise;
-    private Timestamp sunset;*/
     private String sunrise;
     private String sunset;
 

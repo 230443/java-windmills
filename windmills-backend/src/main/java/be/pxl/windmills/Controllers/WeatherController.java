@@ -1,5 +1,6 @@
 package be.pxl.windmills.Controllers;
 
+import be.pxl.windmills.Model.WeatherForecast;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +39,11 @@ public class WeatherController
     public CurrentWeather getCurrentWeather(@RequestParam(value="lat" )String lat, @RequestParam(value="lon" )String lon)
     {
         return weatherService.getCurrentWeather(lat, lon);
+    }
+
+    @PostMapping("weather-forecast")
+    public List<WeatherForecast> getWeatherForecast(@RequestParam(value="lat" )String lat, @RequestParam(value="lon" )String lon)
+    {
+        return weatherService.getWeatherForecast(lat, lon);
     }
 }

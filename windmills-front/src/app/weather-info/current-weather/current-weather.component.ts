@@ -12,7 +12,7 @@ import pressure from '@iconify/icons-fluent/arrow-minimize-vertical-20-filled';
 import sunriseSunset from '@iconify/icons-fluent/weather-sunny-low-24-filled';
 import {CurrentWeather} from "../../model/current-weather";
 import {Location} from "../../model/location";
-import {CurrentWeatherService} from "../../services/current-weather.service";
+import {WeatherService} from "../../services/weather.service";
 import {LocationService} from "../../services/location.service";
 
 @Component({
@@ -37,7 +37,7 @@ export class CurrentWeatherComponent implements OnInit
   sunriseDate!:Date;
   sunsetDate!:Date;
 
-  constructor(private locationService:LocationService, private currentWeatherService:CurrentWeatherService)
+  constructor(private locationService:LocationService, private currentWeatherService:WeatherService)
   {
     this.locationService.getClientLocation().subscribe((data: any) =>{
       this.location = data;
