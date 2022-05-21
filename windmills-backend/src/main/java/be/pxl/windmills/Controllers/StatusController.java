@@ -58,9 +58,12 @@ public class StatusController {
 	}
 
 	@GetMapping
-	public List<StatusDTO> getAllStatus(@RequestParam(value = "id", required = false) Integer id,
-										@RequestParam(value = "page", defaultValue = "0") Integer page,
-										@RequestParam(value = "size", defaultValue = "30") Integer size) {
-		return statusService.getAll(page, size);
+	public List<StatusDTO> getAllStatus(@RequestParam(value = "page", defaultValue = "0") Integer page,
+										@RequestParam(value = "size", defaultValue = "30") Integer size,
+										@RequestParam(value = "start", required = false) String start,
+										@RequestParam(value = "end", required = false) String end) {
+		LOGGER.debug(" page: " + page + " size: " + size + " start: " + start + " end: " + end);
+
+		 return statusService.getStatusByDateTime(page, size, start, end);
 	}
 }

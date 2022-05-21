@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -30,21 +31,34 @@ public class StatusServiceImpl implements StatusService {
 	}
 
 	@Override
-	public StatusDTO getStatusByDateTime(String date) {
-		return null;
-	}
+	public List<StatusDTO> getStatusByDateTime(int page, int size, String start, String end) {
 
-
-	@Override
-	public List<StatusDTO> getAll(int page, int size) {
 		Pageable paging = PageRequest.of(page, size);
+
+		LocalDateTime startDate;
+		LocalDateTime endDate;
+
+		if(start == null) {
+			startDate = LocalDateTime.MIN;
+		}
+		else {
+			startDate = LocalDateTime.parse(start);
+		}
+
+		if(end == null) {
+			endDate = LocalDateTime.of(9999, 12, 31, 23, 59, 59);
+		}
+		else {
+			endDate = LocalDateTime.parse(end);
+		}
+
 		return statusRepository
-				.findAll(paging)
-				.getContent()
+				.findStatusByDateTimeBetween(startDate, endDate, paging)
 				.stream()
 				.map(this::mapStatusToDTO)
 				.collect(toList());
 	}
+
 
 	private StatusDTO mapStatusToDTO(Status status) {
 		StatusDTO statusDTO = new StatusDTO();
