@@ -10,7 +10,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 SAVE_TO_DB_PERIOD = 5  # Save every nth update to DB
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://user:password@0.0.0.0:3306/windmillsdb"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://user:password@0.0.0.0:3308/windmillsdb"
 turbine = Turbine(27, "A", update_interval=3)
 
 
