@@ -1,0 +1,5 @@
+buildhat
+RPi.GPIO
+flask
+Flask-SQLAlchemy
+mysqlclient
