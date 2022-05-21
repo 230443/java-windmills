@@ -4,6 +4,7 @@ import windSpeed from '@iconify/icons-fluent/weather-squalls-24-filled';
 import turbineSpeed from '@iconify/icons-mdi/fan';
 import {ThemePalette} from "@angular/material/core";
 import {TurbineService} from "../services/turbine.service";
+import {TurbineStatus} from "../model/turbine-status";
 
 @Component({
   selector: 'app-turbine-control',
@@ -25,9 +26,15 @@ export class TurbineControlComponent implements OnInit {
   turbineSpeedIcon = turbineSpeed;
   smallIcon = "smallIcon";
 
+  turbineStatus!:TurbineStatus;
+
   constructor(private turbineService:TurbineService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+    this.turbineService.getSpeed().subscribe((data: any) =>{
+      this.turbineStatus = data;
+    })
   }
 
   public onToggle()

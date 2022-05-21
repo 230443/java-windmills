@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CurrentWeather} from "../model/current-weather";
+import {TurbineStatus} from "../model/turbine-status";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,10 @@ export class TurbineService
   turnTurbineOn(): void
   {
     this.http.post(this.baseUrl + 'status', {"isActive": true});
+  }
+
+  getSpeed(): Observable<TurbineStatus>
+  {
+    return this.http.get<TurbineStatus>(this.baseUrl + 'status/now');
   }
 }
