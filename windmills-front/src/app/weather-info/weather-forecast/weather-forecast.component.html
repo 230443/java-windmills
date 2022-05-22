@@ -2,7 +2,7 @@
   <div class="column-25">
     <div class="card">
       {{weather.date | date : 'EEE, dd MMMM'}}<br>
-      <ic-icon [icon]="getIconClass(weather.icon)" [color]="ICON_COLOR" [className]="smallIcon"></ic-icon><br>
+      <ic-icon [icon]="getIconClass(weather.icon)" [color]="getIconColor(weather.icon)" [className]="smallIcon"></ic-icon><br>
       <div style="margin-top: -20px;">{{weather.temp}}°C</div>
     </div>
   </div>

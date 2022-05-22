@@ -22,7 +22,8 @@ import {LocationService} from "../../services/location.service";
 })
 export class CurrentWeatherComponent implements OnInit
 {
-  ICON_COLOR = "#6165F7"
+  ICON_COLOR = "#6165F7";
+  SUN_ICON_COLOR = "#FFD24C";
 
   today = "todayIcon";
 
@@ -56,29 +57,33 @@ export class CurrentWeatherComponent implements OnInit
   getIconClass(icon: String)
   {
     // icon list available on https://openweathermap.org/weather-conditions
-    if (icon === '01d' || icon === '01d')
-    {
+    if (icon === '01d' || icon === '01d') {
       return weatherSunny;
-    }
-    else if (icon === '03d' || icon === '03n' || icon === '04d' || icon === '04n')
-    {
-      return weatherCloudy;
-    }
-    else if (icon === '09d' || icon === '09n' || icon === '10d' || icon === '10n' || icon === '11d' || icon === '11n')
-    {
-      return weatherRainy;
-    }
-    else if (icon === '13d' || icon === '13n')
-    {
-      return weatherSnowy;
-    }
-    else if (icon === '50d' || icon === '50n')
-    {
-      return weatherFoggy;
     }
     else
     {
-      return weatherPartlyCloudy;
+      if (icon === '03d' || icon === '03n' || icon === '04d' || icon === '04n') {
+        return weatherCloudy;
+      } else if (icon === '09d' || icon === '09n' || icon === '10d' || icon === '10n' || icon === '11d' || icon === '11n') {
+        return weatherRainy;
+      } else if (icon === '13d' || icon === '13n') {
+        return weatherSnowy;
+      } else if (icon === '50d' || icon === '50n') {
+        return weatherFoggy;
+      } else {
+        return weatherPartlyCloudy;
+      }
+    }
+  }
+
+  getIconColor(icon: String)
+  {
+    if (icon === '01d' || icon === '01d') {
+      return this.SUN_ICON_COLOR;
+    }
+    else
+    {
+      return this.ICON_COLOR;
     }
   }
 }
