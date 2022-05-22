@@ -5,6 +5,7 @@ import turbineSpeed from '@iconify/icons-mdi/fan';
 import {ThemePalette} from "@angular/material/core";
 import {TurbineService} from "../services/turbine.service";
 import {TurbineStatus} from "../model/turbine-status";
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-turbine-control',
@@ -32,9 +33,12 @@ export class TurbineControlComponent implements OnInit {
 
   ngOnInit(): void
   {
-    this.turbineService.getSpeed().subscribe((data: any) =>{
-      this.turbineStatus = data;
-    })
+    interval(3000).subscribe((x: any) => { // will execute every 3 seconds
+      this.turbineService.getSpeed().subscribe((data: any) =>{
+        this.turbineStatus = data;
+      })
+    });
+
   }
 
   public onToggle()
