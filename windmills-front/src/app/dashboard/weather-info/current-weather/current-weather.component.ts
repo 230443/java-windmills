@@ -10,10 +10,10 @@ import humidity from '@iconify/icons-fluent/drop-20-filled';
 import cloudiness from '@iconify/icons-fluent/weather-cloudy-20-filled';
 import pressure from '@iconify/icons-fluent/arrow-minimize-vertical-20-filled';
 import sunriseSunset from '@iconify/icons-fluent/weather-sunny-low-24-filled';
-import {CurrentWeather} from "../../model/current-weather";
-import {Location} from "../../model/location";
-import {WeatherService} from "../../services/weather.service";
-import {LocationService} from "../../services/location.service";
+import {CurrentWeather} from "../../../model/current-weather";
+import {Location} from "../../../model/location";
+import {WeatherService} from "../../../services/weather.service";
+import {LocationService} from "../../../services/location.service";
 
 @Component({
   selector: 'app-current-weather',

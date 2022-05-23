@@ -4,10 +4,10 @@ import weatherPartlyCloudy from '@iconify/icons-fluent/weather-partly-cloudy-day
 import weatherRainy from '@iconify/icons-fluent/weather-rain-showers-day-24-filled';
 import weatherSunny from '@iconify/icons-fluent/weather-sunny-16-filled';
 import weatherSnowy from '@iconify/icons-fluent/weather-snowflake-20-filled';
-import {WeatherService} from "../../services/weather.service";
-import {WeatherForecast} from "../../model/weather-forecast";
-import {LocationService} from "../../services/location.service";
-import {Location} from "../../model/location";
+import {WeatherService} from "../../../services/weather.service";
+import {WeatherForecast} from "../../../model/weather-forecast";
+import {LocationService} from "../../../services/location.service";
+import {Location} from "../../../model/location";
 import weatherCloudy from "@iconify/icons-fluent/weather-cloudy-24-filled";
 import weatherFoggy from "@iconify/icons-fluent/weather-haze-24-filled";
 

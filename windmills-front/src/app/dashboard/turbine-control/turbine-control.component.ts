@@ -3,8 +3,8 @@ import windmillIcon from '@iconify/icons-icon-park-solid/windmill-two';
 import windSpeed from '@iconify/icons-fluent/weather-squalls-24-filled';
 import turbineSpeed from '@iconify/icons-mdi/fan';
 import {ThemePalette} from "@angular/material/core";
-import {TurbineService} from "../services/turbine.service";
-import {TurbineStatus} from "../model/turbine-status";
+import {TurbineService} from "../../services/turbine.service";
+import {TurbineStatus} from "../../model/turbine-status";
 import { interval } from 'rxjs';
 
 @Component({
