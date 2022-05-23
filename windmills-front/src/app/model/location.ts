@@ -1,7 +1,7 @@
 export interface Location
 {
-  ipAddress:String;
-  city:String;
-  latitude:String;
-  longitude:String;
+  ipAddress:string;
+  city:string;
+  latitude:string;
+  longitude:string;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, retry} from "rxjs";
+import {Location} from "../model/location";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class LocationService
 
   getClientLocation(): Observable<Location>
   {
-    return this.http.get<Location>(this.baseUrl + 'get-location');
+    return this.http.get<Location>(this.baseUrl + 'get-location').pipe(retry(3));
   }
 }

@@ -33,11 +33,11 @@ export class TurbineControlComponent implements OnInit {
 
   ngOnInit(): void
   {
-    interval(3000).subscribe((x: any) => { // will execute every 3 seconds
+    /*interval(3000).subscribe((x: any) => { // will execute every 3 seconds
       this.turbineService.getSpeed().subscribe((data: any) =>{
         this.turbineStatus = data;
       })
-    });
+    });*/
 
   }
 

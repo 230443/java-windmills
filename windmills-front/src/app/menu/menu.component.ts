@@ -9,15 +9,16 @@ import {LocationService} from "../services/location.service";
 })
 export class MenuComponent implements OnInit
 {
-  location!:Location;
+  location!: Location;
 
   constructor(private locationService:LocationService)
   { }
 
-  ngOnInit()
+  ngOnInit(): void
   {
-    this.locationService.getClientLocation().subscribe((data: any) =>{
-      this.location = data;
-    })
+    this.locationService.getClientLocation().subscribe(
+      (data) => {
+        this.location = data;
+      });
   }
 }
