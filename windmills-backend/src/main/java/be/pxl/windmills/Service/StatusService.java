@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface StatusService {
 	StatusDTO getLastStatus();
-	StatusDTO getStatusByDateTime(String dateTime);
-	List<StatusDTO> getAll(int page, int size);
+	List<StatusDTO> getStatusByDateTime(int page, int size, String start, String end);
 }
