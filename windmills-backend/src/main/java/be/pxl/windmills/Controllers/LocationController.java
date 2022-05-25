@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin
 @RequestMapping(value="/locationAPI")
 public class LocationController
 {

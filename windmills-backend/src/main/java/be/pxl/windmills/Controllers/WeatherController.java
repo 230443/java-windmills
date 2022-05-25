@@ -10,7 +10,7 @@ import be.pxl.windmills.Service.WeatherService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin
 @RequestMapping(value="/weatherAPI")
 public class WeatherController
 {
