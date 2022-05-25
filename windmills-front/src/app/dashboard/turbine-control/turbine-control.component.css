@@ -1,0 +1,30 @@
+.inner-row {
+  width: 100%;
+  padding: 50px;
+}
+
+.column {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+.speed {
+  padding-top: 5%;
+}
+
+.row-icon {
+  text-align: left;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+
+.windmill {
+  font-size: 15em;
+}
+
+.smallIcon {
+  font-size: 70px;
+  margin-right: 10px;
+}

@@ -1,0 +1,22 @@
+<div class="inner-row">
+  <div class="column">
+    <div>
+      <ic-icon [icon]="windmillIcon" [color]="iconColor" [className]="windmill"></ic-icon>
+    </div>
+    <div>
+      <mat-slide-toggle [color]="toggleColor"
+                        [(ngModel)]="isToggleChecked"
+                        (change)="onToggle()"></mat-slide-toggle>
+    </div>
+  </div>
+  <div class="column speed">
+    <div class="row-icon">
+      <ic-icon [icon]="windSpeedIcon" [color]="ICON_COLOR" [className]="smallIcon"></ic-icon>
+      Wind Speed: {{turbineStatus.windSpeed}} m/s
+    </div>
+    <div class="row-icon">
+      <ic-icon [icon]="turbineSpeedIcon" [color]="ICON_COLOR" [className]="smallIcon"></ic-icon>
+      Turbine Speed: {{turbineStatus.turbineSpeed}} m/s
+    </div>
+  </div>
+</div>
