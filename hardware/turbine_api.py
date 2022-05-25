@@ -1,7 +1,8 @@
 import datetime
+import time
+import threading
 from flask import Flask, Response, request
 from werkzeug import exceptions
-from threading import Timer
 from . import Turbine
 import json
 from flask_sqlalchemy import SQLAlchemy
@@ -66,22 +67,21 @@ def save_status_to_db():
 
 
 def update_speed():
-    global timer, counter
+    counter = 0
 
-    turbine.update_speed()
-    if counter % SAVE_TO_DB_PERIOD == 0:
-        save_status_to_db()
-        counter = 0
+    while True:
+        turbine.update_speed()
 
-    counter += 1
-    timer = Timer(turbine.update_interval, update_speed)
-    timer.start()
+        if counter % SAVE_TO_DB_PERIOD == 0:
+            save_status_to_db()
+            counter = 0
+
+        counter += 1
+        time.sleep(turbine.update_interval)
 
 
-counter = 0
-timer = Timer(turbine.update_interval, update_speed)
-timer.start()
-
+turbine_thread = threading.Thread(target=update_speed, daemon=True)
+turbine_thread.start()
 
 if __name__ == "__main__":
     app.run()
