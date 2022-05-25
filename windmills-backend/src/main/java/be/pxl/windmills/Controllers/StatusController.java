@@ -44,6 +44,7 @@ public class StatusController {
 
 	@PostMapping
 	public StatusDTO switchTurbine(@RequestBody StatusDTO statusDTO) {
+		LOGGER.info("isActive:" + statusDTO.getIsActive());
 		return webClient
 				.post()
 				.uri("/status")
@@ -60,11 +61,11 @@ public class StatusController {
 
 	@GetMapping
 	public List<StatusDTO> getAllStatus(@RequestParam(value = "page", defaultValue = "0") Integer page,
-										@RequestParam(value = "size", defaultValue = "30") Integer size,
-										@RequestParam(value = "start", required = false) String start,
-										@RequestParam(value = "end", required = false) String end) {
+			@RequestParam(value = "size", defaultValue = "30") Integer size,
+			@RequestParam(value = "start", required = false) String start,
+			@RequestParam(value = "end", required = false) String end) {
 		LOGGER.debug(" page: " + page + " size: " + size + " start: " + start + " end: " + end);
 
-		 return statusService.getStatusByDateTime(page, size, start, end);
+		return statusService.getStatusByDateTime(page, size, start, end);
 	}
 }

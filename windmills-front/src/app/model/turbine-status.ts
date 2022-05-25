@@ -1,5 +1,5 @@
-export interface TurbineStatus
-{
-  windSpeed:number;
-  turbineSpeed:number;
+export interface TurbineStatus {
+  isActive: boolean;
+  windSpeed: number;
+  turbineSpeed: number;
 }
